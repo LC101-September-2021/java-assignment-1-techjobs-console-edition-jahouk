@@ -92,24 +92,48 @@ public class JobData {
      */
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
 
+//        // load data, if not already loaded
+//        loadData();
+//
+//        // TODO - implement this method
+//        ArrayList<HashMap<String, String>> valueJobs = new ArrayList<>();
+//
+//        for (HashMap<String, String> row : allJobs) {
+//            for (Map.Entry<String, String> entry : row.entrySet()) {
+//                String aValue = entry.getValue().toLowerCase();
+//                if (aValue.contains(value)) {
+//                    if(!valueJobs.contains(row)) {
+//                        valueJobs.add(row);
+//                    }
+//                }
+//            }
+//        }
+//        return valueJobs;
+//        //return null;
+
         // load data, if not already loaded
         loadData();
 
-        // TODO - implement this method
-        ArrayList<HashMap<String, String>> valueJobs = new ArrayList<>();
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
-        for (HashMap<String, String> row : allJobs) {
-            for (Map.Entry<String, String> entry : row.entrySet()) {
-                String aValue = entry.getValue().toLowerCase();
-                if (aValue.contains(value)) {
-                    if(!valueJobs.contains(row)) {
-                        valueJobs.add(row);
-                    }
+        for (HashMap<String, String> rows : allJobs) {
+
+            for (Map.Entry<String, String> r : rows.entrySet()) {
+//                System.out.println(r.getValue());
+
+                if (r.getValue().toLowerCase().contains(value.toLowerCase())) {
+                    jobs.add(rows);
+
+                    break;
                 }
             }
+//            return jobs;
         }
-        return valueJobs;
-        //return null;
+
+
+//         TODO - implement this method
+//        return null;
+        return jobs;
     }
 
     /**
